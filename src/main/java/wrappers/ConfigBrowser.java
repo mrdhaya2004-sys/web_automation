@@ -52,7 +52,7 @@ public class ConfigBrowser {
         js.executeScript("document.body.style.zoom='80%'");
         
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+      driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
         
         return driver;
     }
