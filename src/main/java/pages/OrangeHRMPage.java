@@ -21,35 +21,31 @@ public class OrangeHRMPage extends GenericWrappersWeb {
 
     public void launchApplication() {
 
-        driver.get("https://opensource-demo.orangehrmlive.com/");
+        driver().get(
+                "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 
     public void enterUsername(String username) {
 
-        driver.findElement(txtUsername).sendKeys(username);
+        driver().findElement(txtUsername).clear();
+        driver().findElement(txtUsername).sendKeys(username);
     }
 
     public void enterPassword(String password) {
 
-        driver.findElement(txtPassword).sendKeys(password);
+        driver().findElement(txtPassword).clear();
+        driver().findElement(txtPassword).sendKeys(password);
     }
 
-   public void clickLoginButton() {
+    public void clickLoginButton() {
 
-    WebDriverWait wait =
-            new WebDriverWait(driver, Duration.ofSeconds(30));
-
-    WebElement loginBtn =
-            wait.until(ExpectedConditions.elementToBeClickable(
-                    By.xpath(xpaths.getProperty("btn-login-submit"))));
-
-    loginBtn.click();
-}
+        driver().findElement(btnLogin).click();
+    }
 
     public void verifyDashboardPage() {
 
         boolean status =
-                driver.findElement(dashboard).isDisplayed();
+                driver().findElement(dashboard).isDisplayed();
 
         Assert.assertTrue(
                 status,
@@ -59,7 +55,7 @@ public class OrangeHRMPage extends GenericWrappersWeb {
     public void verifyErrorMessage() {
 
         boolean status =
-                driver.findElement(errorMsg).isDisplayed();
+                driver().findElement(errorMsg).isDisplayed();
 
         Assert.assertTrue(
                 status,
