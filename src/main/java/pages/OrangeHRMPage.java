@@ -20,10 +20,8 @@ public class OrangeHRMPage extends GenericWrappersWeb {
             By.xpath("//p[contains(@class,'alert-content-text')]");
 
     public void launchApplication() {
-
-        driver().get(
-                "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-    }
+    System.out.println("Application already launched from Hooks");
+}
 
     public void enterUsername(String username) {
 
