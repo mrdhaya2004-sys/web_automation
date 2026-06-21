@@ -7,8 +7,8 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import wrappers.ConfigDriver;
 import wrappers.ConfigBrowser;
+import wrappers.ConfigDriver;
 
 public class Hooks {
 
@@ -49,5 +49,4 @@ public class Hooks {
             ConfigDriver.getInstance().getDriver().quit();
         }
     }
-}
 }
