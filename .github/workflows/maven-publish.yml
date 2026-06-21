@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - main
-      - master
-
-  pull_request:
-    branches:
-      - main
-      - master
 
   workflow_dispatch:
 
@@ -29,13 +23,17 @@ jobs:
           distribution: temurin
           java-version: 8
 
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Verify Chrome
+        run: chrome --version
+
       - name: Cache Maven Dependencies
         uses: actions/cache@v4
         with:
           path: ~/.m2
           key: maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            maven-
 
       - name: Install Dependencies
         run: mvn clean install -DskipTests
@@ -43,7 +41,7 @@ jobs:
       - name: Run Automation Tests
         run: mvn test
 
-      - name: Upload Test Reports
+      - name: Upload Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
