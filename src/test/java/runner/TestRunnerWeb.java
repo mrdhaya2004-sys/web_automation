@@ -4,7 +4,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-        tags = "@Login",
+        tags = "@orangehrm",
         features = {"src/test/resources/features/"},
         glue = {"facade", "hooks"},
         monochrome = true,
