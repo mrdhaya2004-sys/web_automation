@@ -5,10 +5,25 @@ import org.openqa.selenium.TakesScreenshot;
 
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import wrappers.ConfigDriver;
+import wrappers.ConfigBrowser;
 
 public class Hooks {
+
+    @Before
+    public void launchBrowser() {
+
+        ConfigDriver.getInstance().setDriver(
+                ConfigBrowser.initBrowser("chrome", true));
+
+        ConfigDriver.getInstance()
+                .getDriver()
+                .get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+        System.out.println("Browser launched successfully");
+    }
 
     @AfterStep
     public void takeScreenshot(Scenario scenario) {
@@ -30,7 +45,9 @@ public class Hooks {
     public void closeBrowser() {
 
         if (ConfigDriver.getInstance().getDriver() != null) {
+
             ConfigDriver.getInstance().getDriver().quit();
         }
     }
+}
 }
