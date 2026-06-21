@@ -38,6 +38,9 @@ jobs:
       - name: Install Dependencies
         run: mvn clean install -DskipTests
 
+      - name: Print Maven Dependencies
+        run: mvn dependency:tree
+
       - name: Run Automation Tests
         run: mvn test
 
