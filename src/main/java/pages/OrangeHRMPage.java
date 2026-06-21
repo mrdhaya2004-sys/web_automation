@@ -23,17 +23,28 @@ public class OrangeHRMPage extends GenericWrappersWeb {
     System.out.println("Application already launched from Hooks");
 }
 
-    public void enterUsername(String username) {
+   public void enterUsername(String username) {
 
-        driver().findElement(txtUsername).clear();
-        driver().findElement(txtUsername).sendKeys(username);
-    }
+    WebDriverWait wait =
+            new WebDriverWait(driver(), Duration.ofSeconds(20));
 
-    public void enterPassword(String password) {
+    WebElement usernameField =
+            wait.until(ExpectedConditions.visibilityOfElementLocated(txtUsername));
 
-        driver().findElement(txtPassword).clear();
-        driver().findElement(txtPassword).sendKeys(password);
-    }
+    usernameField.clear();
+    usernameField.sendKeys(username);
+}
+  public void enterPassword(String password) {
+
+    WebDriverWait wait =
+            new WebDriverWait(driver(), Duration.ofSeconds(20));
+
+    WebElement passwordField =
+            wait.until(ExpectedConditions.visibilityOfElementLocated(txtPassword));
+
+    passwordField.clear();
+    passwordField.sendKeys(password);
+}
 
     public void clickLoginButton() {
 
