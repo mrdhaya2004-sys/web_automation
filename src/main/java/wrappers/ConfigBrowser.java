@@ -33,7 +33,7 @@ public class ConfigBrowser {
     static WebDriver initChromeDefault(boolean privateMode) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        
+        options.addArguments("--headless=new");
         options.addArguments("--force-device-scale-factor=0.7");
         options.addArguments("--disable-infobars");
         options.addArguments("--ignore-ssl-errors=yes");
